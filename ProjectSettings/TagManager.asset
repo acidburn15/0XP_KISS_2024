@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Note
   - Spike
+  - NoteSpawn
   layers:
   - Default
   - TransparentFX

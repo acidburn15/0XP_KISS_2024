@@ -7,6 +7,7 @@ public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private string[] killingTags;
     [SerializeField] private Transform spawn;
+    [SerializeField] public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (killingTags.Contains(killingObject.tag))
         {
+            gameManager.RespawnNotes();
             transform.position = spawn.position;
             // ajouter une mort au compteur du game Manager
         }
