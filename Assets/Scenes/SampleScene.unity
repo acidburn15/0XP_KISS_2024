@@ -136,10 +136,9 @@ GameObject:
   - component: {fileID: 292136883}
   - component: {fileID: 292136882}
   - component: {fileID: 292136884}
-  - component: {fileID: 292136887}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 292136883}
-  moveSpeed: 3
+  moveSpeed: 5
 --- !u!212 &292136885
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -250,7 +249,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dff6c3b91632f5849b8c2730359d6138, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -297,20 +296,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &292136887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292136881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f24dd97e2e1ed1647b45ecfb82590d45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickableItemTags:
-  - Note
 --- !u!1 &462483454
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,6 +307,7 @@ GameObject:
   - component: {fileID: 462483456}
   - component: {fileID: 462483455}
   - component: {fileID: 462483457}
+  - component: {fileID: 462483458}
   m_Layer: 0
   m_Name: Music Note
   m_TagString: Note
@@ -349,7 +335,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 928b77cd4b8b9a647bfd6898d8999cdb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -391,7 +377,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.53, y: 0.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.35477, y: 0.35477, z: 0.35477}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -431,6 +417,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &462483458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462483454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f24dd97e2e1ed1647b45ecfb82590d45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag:
+  - Player
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
