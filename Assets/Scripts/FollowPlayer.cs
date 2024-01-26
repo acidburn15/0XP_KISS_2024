@@ -6,6 +6,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private string[] playerTag;
+    [SerializeField] private Animator noteAnimator;
     bool picked = false;
     Transform playerTransform;
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class FollowPlayer : MonoBehaviour
         if (picked)
         {
             FollowTarget(playerTransform);
+            
         }
     }
 
