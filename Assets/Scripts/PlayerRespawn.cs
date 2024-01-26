@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    [SerializeField] private string[] killingTags;
     [SerializeField] private Transform spawn;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +20,7 @@ public class PlayerRespawn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D killingObject)
     {
-        if (killingTags.Contains(killingObject.tag))
+        if (killingObject.CompareTag("Spike"))
         {
             transform.position = spawn.position;
             // ajouter une mort au compteur du game Manager
