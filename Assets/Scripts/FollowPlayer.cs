@@ -7,7 +7,8 @@ public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private string[] playerTag;
     [SerializeField] private Animator noteAnimator;
-    bool picked = false;
+    [SerializeField] public GameManager gameManager;
+    public bool picked = false;
     Transform playerTransform;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,6 @@ public class FollowPlayer : MonoBehaviour
         if (picked)
         {
             FollowTarget(playerTransform);
-            
         }
     }
 
@@ -29,6 +29,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if (playerTag.Contains(player.tag))
         {
+            gameManager.AddNoteCollected();
             picked = true;
             playerTransform = player.transform;
 
@@ -38,5 +39,10 @@ public class FollowPlayer : MonoBehaviour
     private void FollowTarget(Transform playerTransform)
     {
         transform.position = Vector3.Lerp(transform.position, new Vector3(playerTransform.position.x - 1, playerTransform.position.y, 0), 6f * Time.deltaTime);
+    }
+
+    public void ChangePickedState()
+    {
+        picked = false;
     }
 }
