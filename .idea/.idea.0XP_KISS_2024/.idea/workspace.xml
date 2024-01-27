@@ -10,6 +10,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/3f637bc8-e644-4bef-ad8a-20ae1f58b6fb_Hubermont-Romain (1).zip.6fb/Build_Final/Spy Gobou/Assets/Script/CanvaManager.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -90,6 +93,8 @@
       <workItem from="1706369559152" duration="1366000" />
       <workItem from="1706376115916" duration="92000" />
       <workItem from="1706376254243" duration="1186000" />
+      <workItem from="1706379279618" duration="1517000" />
+      <workItem from="1706386475349" duration="2947000" />
       <workItem from="1706379279618" duration="71000" />
     </task>
     <servers />

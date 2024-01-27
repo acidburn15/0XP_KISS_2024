@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform doorTransform;
+    [SerializeField] private TextMeshProUGUI countNote;
+    [SerializeField] private TextMeshProUGUI countDead;
+
     //[SerializeField] private Transform transitionTransform;
+    public int death;
     public int numberOfNotes;
     private GameObject[] respawns;
     private FollowPlayer[] notes;
@@ -33,6 +38,8 @@ public class GameManager : MonoBehaviour
     public void AddNoteCollected()
     {
         notesCollected++;
+        countNote.text = notesCollected.ToString() + "/3";
+        
     }
 
     public void RespawnNotes()
@@ -45,6 +52,7 @@ public class GameManager : MonoBehaviour
             notes[i].GetComponent<FollowPlayer>().ChangePickedState();
             notes[i].transform.position = respawns[i].transform.position;
             notesCollected = 0;
+            countNote.text = notesCollected.ToString() + "/3";
         }
     }
 
@@ -68,8 +76,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ReturnGame()
+    public void addDeath()
     {
-        setting.SetActive(false);
+        death += 1;
+        countDead.text = death.ToString() + "x";
     }
 }
