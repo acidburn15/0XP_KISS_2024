@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private FollowPlayer[] notes;
     private GameObject[] noteObjects;
     public int notesCollected;
+    [SerializeField] private AudioClip[] noteSounds;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +54,9 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject note in noteObjects)
         {
-            note.GetComponent<FollowPlayer>().EndLevel();
+            FollowPlayer noteObject = note.GetComponent<FollowPlayer>();
+            noteObject.EndLevel();
+            SoundFXManager.Instance.PlaySoundFXClip(noteObject.GetNoteSound(), noteObject.transform, noteObject.GetNoteSoundVolume());
             // activation du son pour la note.
 
             yield return new WaitForSeconds(0.35f);
