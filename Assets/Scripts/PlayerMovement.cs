@@ -8,11 +8,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
     [SerializeField] private Animator playerAnimator;
+    [SerializeField] private AudioClip[] footsteps;
+
     private GameObject note;
     private bool top;
     private bool cooldown = false;
     private int isInverted = 1;
     private bool epicIsPlayed = false;
+
+    // delai pour sound
+    private float waitTime = 0.25f;
+    private float timer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         note = GameObject.FindGameObjectWithTag("Note");
         bool endLevel = false;
 
+        timer += Time.deltaTime;
+
         if (note != null)
         {
             note.GetComponent<FollowPlayer>().ChangeLeftOrRightState(moveX);
@@ -56,11 +64,21 @@ public class PlayerMovement : MonoBehaviour
         if (moveX * isInverted > 0)
         {
             playerAnimator.Play("Player right");
+            if (timer > waitTime && !cooldown)
+            {
+                SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
+                timer = 0;
+            }
         }
 
         else if (moveX * isInverted < 0)
         {
             playerAnimator.Play("Player left");
+            if (timer > waitTime && !cooldown)
+            {
+                SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
+                timer = 0;
+            }
         }
 
         else if (moveX == 0 && !endLevel)

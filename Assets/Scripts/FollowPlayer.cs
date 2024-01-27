@@ -13,6 +13,8 @@ public class FollowPlayer : MonoBehaviour
     public GameManager gameManager;
 
     [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private AudioClip noteSound;
+    [SerializeField] private float noteVolume = 1f;
 
     public bool picked = false;
     public bool endLevel = false;
@@ -54,12 +56,14 @@ public class FollowPlayer : MonoBehaviour
     {
         if (endLevel && col.CompareTag("Door"))
         {
+            explosion.transform.position = endPos.position + new Vector3(0.4f, -0.4f, -1);
             Instantiate(explosion);
             Destroy(gameObject);
         }
         else if (playerTag.Contains(col.tag) && !picked)
         {
             gameManager.AddNoteCollected();
+            SoundFXManager.Instance.PlaySoundFXClip(noteSound, transform, 1f);
             offset = gameManager.notesCollected;
             picked = true;
             playerTransform = col.transform;
@@ -77,7 +81,6 @@ public class FollowPlayer : MonoBehaviour
 
     private void moveToDoor()
     {
-
 
         GetCenter(Vector3.up * 4);
 
@@ -116,6 +119,16 @@ public class FollowPlayer : MonoBehaviour
     public bool getEndLevel()
     {
         return endLevel;
+    }
+
+    public AudioClip GetNoteSound()
+    {
+        return noteSound;
+    }
+
+    public float GetNoteSoundVolume()
+    {
+        return noteVolume;
     }
 }
 
