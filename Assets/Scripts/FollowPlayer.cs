@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,6 +19,9 @@ public class FollowPlayer : MonoBehaviour
     private int offset;
     Transform playerTransform;
     public static float leftOrRight;
+    [SerializeField] private TextMeshProUGUI countNote;
+
+    public int note;
 
     //Variable pour le slerp
     private Transform endPos;
@@ -36,6 +41,8 @@ public class FollowPlayer : MonoBehaviour
         if (picked && !endLevel)
         {
             FollowTarget(playerTransform);
+
+
         }
         else if (endLevel)
         {
@@ -45,7 +52,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if(endLevel && col.CompareTag("Door"))
+        if (endLevel && col.CompareTag("Door"))
         {
             Instantiate(explosion);
             Destroy(gameObject);
@@ -57,19 +64,22 @@ public class FollowPlayer : MonoBehaviour
             picked = true;
             playerTransform = col.transform;
 
+
         }
     }
 
     private void FollowTarget(Transform playerTransform)
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(playerTransform.position.x - (offset * leftOrRight), playerTransform.position.y, 0), 6f * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position,
+            new Vector3(playerTransform.position.x - (offset * leftOrRight), playerTransform.position.y, 0),
+            6f * Time.deltaTime);
     }
 
     private void moveToDoor()
     {
 
 
-        GetCenter(Vector3.up*4);
+        GetCenter(Vector3.up * 4);
 
         transform.position = Vector3.Slerp(startRelCenter, endRelCenter, 3 * Time.deltaTime);
         transform.position += centerPoint;
@@ -97,7 +107,7 @@ public class FollowPlayer : MonoBehaviour
 
     public void ChangeLeftOrRightState(float moveX)
     {
-        if(moveX != 0)
+        if (moveX != 0)
         {
             leftOrRight = moveX;
         }
@@ -108,3 +118,5 @@ public class FollowPlayer : MonoBehaviour
         return endLevel;
     }
 }
+
+
