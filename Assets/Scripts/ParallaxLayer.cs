@@ -9,11 +9,11 @@ public class ParallaxLayer : MonoBehaviour
 
     public void Move(float delta)
     {
-        Vector3 newPos = transform.localPosition;
+        Vector3 newPos = transform.position;
         newPos.x -= delta * parallaxFactor;
         newPos.y = cameraPosition.position.y;
 
-        transform.localPosition = newPos;
+        transform.position = newPos;
     }
 
 }
