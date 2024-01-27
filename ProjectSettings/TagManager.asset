@@ -8,6 +8,7 @@ TagManager:
   - Spike
   - NoteSpawn
   - Wall
+  - Door
   layers:
   - Default
   - TransparentFX

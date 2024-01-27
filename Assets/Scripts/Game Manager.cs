@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int numberOfNotes;
     private GameObject[] respawns;
     private FollowPlayer[] notes;
+    private GameObject[] noteObjects;
     public int notesCollected;
     // Start is called before the first frame update
     void Start()
@@ -42,14 +44,19 @@ public class GameManager : MonoBehaviour
 
     public void OpenDoor()
     {
-        notes = GameObject.FindObjectsOfType<FollowPlayer>();
+        noteObjects = GameObject.FindGameObjectsWithTag("Note");
+        StartCoroutine(DelayCoroutine(noteObjects));
 
-        for (int i = 0; i < notes.Length; i++)
+    }
+
+    IEnumerator DelayCoroutine(GameObject[] noteObjects)
+    {
+        foreach (GameObject note in noteObjects)
         {
-            notes[i].GetComponent<FollowPlayer>().ChangePickedState();
-            //notes[i].transform.position = Vector3.Lerp(notes[i].transform.position, transitionTransform.position, 3f * Time.deltaTime);
-            //notes[i].transform.position = Vector3.Lerp(notes[i].transform.position, doorTransform.position, 3f * Time.deltaTime);
-            notes[i].transform.position = Vector2.MoveTowards(notes[i].transform.position, doorTransform.position, numberOfNotes/i * Time.deltaTime);
+            note.GetComponent<FollowPlayer>().EndLevel();
+            // activation du son pour la note.
+
+            yield return new WaitForSeconds(0.35f);
         }
     }
 }
