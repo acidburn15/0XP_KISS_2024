@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfNotes: 3
+  notesCollected: 0
 --- !u!1 &292136881
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 292136883}
   moveSpeed: 5
+  note: {fileID: 1763629811}
 --- !u!4 &292136886
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,6 +1498,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1763629811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6797653350071095477, guid: 8530ba7f51b4e7f4ab1ac9cdc75f2c69, type: 3}
+  m_PrefabInstance: {fileID: 7154790835561521208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3115654968374649415
 PrefabInstance:
   m_ObjectHideFlags: 0

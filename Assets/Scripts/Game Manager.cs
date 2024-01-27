@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int numberOfNotes;
     private GameObject[] respawns;
     private FollowPlayer[] notes;
-    private int notesCollected;
+    public int notesCollected;
     // Start is called before the first frame update
     void Start()
     {

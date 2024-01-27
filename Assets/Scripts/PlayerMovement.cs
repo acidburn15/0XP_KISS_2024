@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private GameObject note;
     private bool top;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
+        note.GetComponent<FollowPlayer>().ChangeLeftOrRightState(moveX);
         
         Vector3 moveDirection = new Vector3(moveX, 0).normalized;
 
