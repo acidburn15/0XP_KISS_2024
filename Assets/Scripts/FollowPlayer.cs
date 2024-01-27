@@ -47,6 +47,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if(endLevel && col.CompareTag("Door"))
         {
+            explosion.transform.position = endPos.position + new Vector3(0.4f, -0.4f, -1);
             Instantiate(explosion);
             Destroy(gameObject);
         }
