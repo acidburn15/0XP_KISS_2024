@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
@@ -40,14 +41,18 @@ public class FollowPlayer : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D player)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (playerTag.Contains(player.tag) && !picked)
+        if(endLevel && col.CompareTag("Door"))
+        {
+            Destroy(gameObject);
+        }
+        else if (playerTag.Contains(col.tag) && !picked)
         {
             gameManager.AddNoteCollected();
             offset = gameManager.notesCollected;
             picked = true;
-            playerTransform = player.transform;
+            playerTransform = col.transform;
 
         }
     }
