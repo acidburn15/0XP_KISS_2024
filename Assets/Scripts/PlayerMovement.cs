@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private GameObject note;
     private bool top;
+    private bool cooldown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,10 +39,19 @@ public class PlayerMovement : MonoBehaviour
     
     private void InvertGravity()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !cooldown)
         {
+            cooldown = true;
             rb.gravityScale *= -1;
             Rotation();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Wall")
+        {
+            cooldown = false;
         }
     }
 
