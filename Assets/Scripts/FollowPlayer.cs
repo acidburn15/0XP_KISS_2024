@@ -9,8 +9,8 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private string[] playerTag;
     [SerializeField] private Animator noteAnimator;
     public GameManager gameManager;
-    
 
+    [SerializeField] private ParticleSystem explosion;
 
     public bool picked = false;
     public bool endLevel = false;
@@ -47,6 +47,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if(endLevel && col.CompareTag("Door"))
         {
+            Instantiate(explosion);
             Destroy(gameObject);
         }
         else if (playerTag.Contains(col.tag) && !picked)

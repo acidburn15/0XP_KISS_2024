@@ -51,6 +51,9 @@ MonoBehaviour:
   - Player
   noteAnimator: {fileID: 401492781126430048}
   gameManager: {fileID: 0}
+  explosion: {fileID: 7269079206876211936, guid: 3ddfa53668ba04c46b4510949bd77ff2, type: 3}
+  picked: 0
+  endLevel: 0
 --- !u!212 &4884244626447118618
 SpriteRenderer:
   m_ObjectHideFlags: 0

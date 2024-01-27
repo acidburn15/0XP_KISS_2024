@@ -49,8 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag:
   - Player
-  noteAnimator: {fileID: 0}
+  noteAnimator: {fileID: 8617062863274867678}
   gameManager: {fileID: 0}
+  explosion: {fileID: 7269079206876211936, guid: 3ddfa53668ba04c46b4510949bd77ff2, type: 3}
+  picked: 0
+  endLevel: 0
 --- !u!212 &1607128978483152952
 SpriteRenderer:
   m_ObjectHideFlags: 0
