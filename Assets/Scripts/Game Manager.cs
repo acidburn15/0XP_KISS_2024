@@ -11,18 +11,23 @@ public class GameManager : MonoBehaviour
     private GameObject[] respawns;
     private FollowPlayer[] notes;
     private GameObject[] noteObjects;
+    public GameObject setting;
     public int notesCollected;
     [SerializeField] private AudioClip[] noteSounds;
     // Start is called before the first frame update
     void Start()
     {
+        setting.SetActive(false);
         RespawnNotes();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            setting.SetActive(true);
+        }
     }
 
     public void AddNoteCollected()
@@ -61,5 +66,10 @@ public class GameManager : MonoBehaviour
 
             yield return new WaitForSeconds(0.35f);
         }
+    }
+
+    public void ReturnGame()
+    {
+        setting.SetActive(false);
     }
 }

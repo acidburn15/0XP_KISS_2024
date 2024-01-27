@@ -37,5 +37,5 @@ public class CanvaManager : MonoBehaviour
         setting.SetActive(true);
         main.SetActive(false);
     }
-
+    
 }
