@@ -50,6 +50,7 @@ MonoBehaviour:
   playerTag:
   - Player
   noteAnimator: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!212 &1607128978483152952
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -7,7 +7,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private GameObject note;
+    [SerializeField] private Animator playerAnimator;
     private bool top;
+    private bool cooldown = false;
+    private int isInverted = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,22 +27,50 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-   
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            cooldown = false;
+        }
+    }
 
     private void Move()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
+        note.GetComponent<FollowPlayer>().ChangeLeftOrRightState(moveX);
         
         Vector3 moveDirection = new Vector3(moveX, 0).normalized;
 
         transform.position +=  moveDirection * (moveSpeed * Time.deltaTime);
+
+        // Animation
+        if (moveX * isInverted > 0)
+        {
+
+            playerAnimator.Play("Player right");
+
+        }
+
+        else if (moveX * isInverted < 0)
+        {
+            playerAnimator.Play("Player left");
+        }
+
+        else if (moveX == 0)
+        {
+
+            playerAnimator.Play("Player idle");
+        }
     }
     
     private void InvertGravity()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!cooldown && Input.GetKeyDown(KeyCode.Space))
         {
+            cooldown = true;
             rb.gravityScale *= -1;
+            isInverted *= -1;
             Rotation();
         }
     }
