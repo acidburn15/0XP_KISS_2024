@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private bool top;
     private bool cooldown = false;
     private int isInverted = 1;
+    private bool epicIsPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -39,9 +40,12 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         note = GameObject.FindGameObjectWithTag("Note");
+        bool endLevel = false;
+
         if (note != null)
         {
             note.GetComponent<FollowPlayer>().ChangeLeftOrRightState(moveX);
+            endLevel = note.GetComponent<FollowPlayer>().getEndLevel();
         }
         
         Vector3 moveDirection = new Vector3(moveX, 0).normalized;
@@ -51,9 +55,7 @@ public class PlayerMovement : MonoBehaviour
         // Animation
         if (moveX * isInverted > 0)
         {
-
             playerAnimator.Play("Player right");
-
         }
 
         else if (moveX * isInverted < 0)
@@ -61,10 +63,14 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.Play("Player left");
         }
 
-        else if (moveX == 0)
+        else if (moveX == 0 && !endLevel)
         {
 
             playerAnimator.Play("Player idle");
+        }
+        else if (endLevel)
+        {
+            playerAnimator.Play("Player epic");
         }
     }
     

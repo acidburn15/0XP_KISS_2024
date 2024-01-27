@@ -8,7 +8,9 @@ public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private string[] playerTag;
     [SerializeField] private Animator noteAnimator;
-    [SerializeField] public GameManager gameManager;
+    public GameManager gameManager;
+    
+
 
     public bool picked = false;
     public bool endLevel = false;
@@ -65,6 +67,7 @@ public class FollowPlayer : MonoBehaviour
     private void moveToDoor()
     {
 
+
         GetCenter(Vector3.up*4);
 
         transform.position = Vector3.Slerp(startRelCenter, endRelCenter, 3 * Time.deltaTime);
@@ -97,5 +100,10 @@ public class FollowPlayer : MonoBehaviour
         {
             leftOrRight = moveX;
         }
+    }
+
+    public bool getEndLevel()
+    {
+        return endLevel;
     }
 }
