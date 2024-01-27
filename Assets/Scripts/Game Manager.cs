@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int numberOfNotes;
+    public int numberOfNotes;
     private GameObject[] respawns;
     private FollowPlayer[] notes;
     public int notesCollected;
@@ -36,5 +36,10 @@ public class GameManager : MonoBehaviour
             notes[i].transform.position = respawns[i].transform.position;
             notesCollected = 0;
         }
+    }
+
+    public void OpenDoor()
+    {
+
     }
 }
