@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Transform doorTransform;
+    //[SerializeField] private Transform transitionTransform;
     public int numberOfNotes;
     private GameObject[] respawns;
     private FollowPlayer[] notes;
@@ -40,6 +42,14 @@ public class GameManager : MonoBehaviour
 
     public void OpenDoor()
     {
+        notes = GameObject.FindObjectsOfType<FollowPlayer>();
 
+        for (int i = 0; i < notes.Length; i++)
+        {
+            notes[i].GetComponent<FollowPlayer>().ChangePickedState();
+            //notes[i].transform.position = Vector3.Lerp(notes[i].transform.position, transitionTransform.position, 3f * Time.deltaTime);
+            //notes[i].transform.position = Vector3.Lerp(notes[i].transform.position, doorTransform.position, 3f * Time.deltaTime);
+            notes[i].transform.position = Vector2.MoveTowards(notes[i].transform.position, doorTransform.position, numberOfNotes/i * Time.deltaTime);
+        }
     }
 }
