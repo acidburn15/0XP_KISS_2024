@@ -7,9 +7,9 @@ public class SoundParameterSaving : MonoBehaviour
 {
     public static SoundParameterSaving Instance;
 
-    public static float masterVolume = 1f;
-    public static float soundFXVolume = 1f;
-    public static float musicVolume = 1f;
+    public static float masterVolume = 0.1f;
+    public static float soundFXVolume = 0.1f;
+    public static float musicVolume = 0.01f;
 
 
     [SerializeField] private Slider masterVolumeSlider;
