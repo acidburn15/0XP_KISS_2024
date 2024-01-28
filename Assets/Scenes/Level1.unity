@@ -6827,6 +6827,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 85539011}
     - target: {fileID: 4011540607051062880, guid: ccbba7259aa11b34bac1cadc7a233c48, type: 3}
+      propertyPath: levelRiff
+      value: 
+      objectReference: {fileID: 8300000, guid: 816c8728aa29d394181b2cd55457377b, type: 3}
+    - target: {fileID: 4011540607051062880, guid: ccbba7259aa11b34bac1cadc7a233c48, type: 3}
       propertyPath: doorTransform
       value: 
       objectReference: {fileID: 1114928621}
@@ -6910,7 +6914,7 @@ PrefabInstance:
     - target: {fileID: 7097894453238832589, guid: 5631799ed6b4b254782633425f613eee, type: 3}
       propertyPath: noteSound
       value: 
-      objectReference: {fileID: 8300000, guid: 00b690e7707eefa4fa40ee35089ed9b9, type: 3}
+      objectReference: {fileID: 8300000, guid: 72c612c79c5c2cb438f3014a7b7af80e, type: 3}
     - target: {fileID: 7097894453238832589, guid: 5631799ed6b4b254782633425f613eee, type: 3}
       propertyPath: gameManager
       value: 
@@ -7059,7 +7063,7 @@ PrefabInstance:
     - target: {fileID: 1672594562658822991, guid: 8530ba7f51b4e7f4ab1ac9cdc75f2c69, type: 3}
       propertyPath: noteSound
       value: 
-      objectReference: {fileID: 8300000, guid: 07290af455330bb4d8c8b7f4beb51b54, type: 3}
+      objectReference: {fileID: 8300000, guid: 77ce134407d87564da1b6855ee7c8d32, type: 3}
     - target: {fileID: 1672594562658822991, guid: 8530ba7f51b4e7f4ab1ac9cdc75f2c69, type: 3}
       propertyPath: gameManager
       value: 
@@ -7172,7 +7176,7 @@ PrefabInstance:
     - target: {fileID: 7501931812731880371, guid: 7812de2c1ff409d448aec50ef66b44fb, type: 3}
       propertyPath: noteSound
       value: 
-      objectReference: {fileID: 8300000, guid: f349ab4ef5cfa534f9e90291917dbffc, type: 3}
+      objectReference: {fileID: 8300000, guid: 89159cf8a6fe403438f14534e5b5c995, type: 3}
     - target: {fileID: 7501931812731880371, guid: 7812de2c1ff409d448aec50ef66b44fb, type: 3}
       propertyPath: gameManager
       value: 
@@ -7219,3 +7223,4 @@ SceneRoots:
   - {fileID: 1861264038}
   - {fileID: 3417737167014399911}
   - {fileID: 642061103}
+  - {fileID: 1938590427}
