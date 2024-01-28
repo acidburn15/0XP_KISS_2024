@@ -7,6 +7,8 @@ public class CanvaManager : MonoBehaviour
 {
     public GameObject setting;
     public GameObject main;
+
+    public int scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class CanvaManager : MonoBehaviour
     public void LaunchGame()
     {
         SceneManager.LoadScene(1);
+        
     }
 
     public void Main_Canvas()

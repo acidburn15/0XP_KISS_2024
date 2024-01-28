@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Door : MonoBehaviour
     private float timer = 10f;
     private bool open;
     private bool clipPlayed = false;
-
+    private int  sceneID = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +55,16 @@ public class Door : MonoBehaviour
         if (open)
         {
             Debug.Log("NEXT LEVEL");
-            // load prochaine scène;
+            sceneID = SceneManager.GetActiveScene().buildIndex;
+            if (sceneID <= 3)
+            {
+                SceneManager.LoadScene(sceneID+1);
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
+            }
+            // load prochaine scï¿½ne;
         }
     }
 }

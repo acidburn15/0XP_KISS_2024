@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject note;
     private bool top;
     private bool cooldown = false;
-    private int isInverted = 1;
+    public float isInverted = 1;
     private bool epicIsPlayed = false;
 
     // delai pour sound
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         doorTransform = GameObject.FindGameObjectWithTag("Door").transform;
     }
 
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
             float distanceWithDoor = (doorTransform.position - transform.position).magnitude;
             //if (distanceWithDoor < 10f)
             //{
-            //    soundMixerManager.SetMusicVolume(1);//max volume setter par le jouer - 20% par unités de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
+            //    soundMixerManager.SetMusicVolume(1);//max volume setter par le jouer - 20% par unitï¿½s de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
             //}
         }
         Move();
@@ -110,15 +111,21 @@ public class PlayerMovement : MonoBehaviour
         if (!cooldown && Input.GetKeyDown(KeyCode.Space))
         {
             cooldown = true;
-            rb.gravityScale *= -1;
             isInverted *= -1;
+            rb.gravityScale *= -1;
             Rotation();
         }
     }
 
+    public void ResetGravity()
+    {
+        isInverted = 1;
+        rb.gravityScale = 1;
+        Rotation();
+    }
     void Rotation()
     {
-        if (top == false)
+        if (isInverted == -1f)
         {
             transform.eulerAngles = new Vector3(0, 0, 180f);
         }
@@ -126,6 +133,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.eulerAngles = Vector3.zero;
         }
-        top = !top;
+        
     }
 }

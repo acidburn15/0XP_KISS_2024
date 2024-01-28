@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     public int notesCollected;
 
     [SerializeField] private AudioClip[] noteSounds;
-    [Serialize] SoundMixerManager soundMixerManager;
+    [SerializeField] private SoundMixerManager soundMixerManager;
 
     private void Awake()
     {
@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             setting.SetActive(true);
+            son.SetActive(false);
             hud.SetActive(false);
         }
     }

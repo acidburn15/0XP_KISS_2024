@@ -11,6 +11,7 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] public GameManager gameManager;
     [SerializeField] private TextMeshProUGUI countDead;
     [SerializeField] private AudioClip deathClip;
+    [SerializeField] private PlayerMovement playerMovement;
 
 
     public int death;
@@ -30,11 +31,13 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (killingTags.Contains(killingObject.tag))
         {
+            FadeEffect.Instance.FadeStart();
             SoundFXManager.Instance.PlaySoundFXClip(deathClip, transform, 1f);
             gameManager.RespawnNotes();
             transform.position = spawn.position;
             gameManager.addDeath();
             
+            playerMovement.GetComponent<PlayerMovement>().ResetGravity();
 
             // ajouter une mort au compteur du game Manager
         }
