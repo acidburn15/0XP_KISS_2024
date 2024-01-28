@@ -9,15 +9,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static float masterVolume;
-    public static float soundFXVolume;
-    public static float musicVolume;
-
-    [SerializeField] private Slider masterVolumeSlider;
-    [SerializeField] private Slider soundFXVolumeSlider;
-    [SerializeField] private Slider musicVolumeSlider;
-
-
     [SerializeField] private Transform doorTransform;
     [SerializeField] private TextMeshProUGUI countNote;
     [SerializeField] private TextMeshProUGUI countDead;
@@ -35,18 +26,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip[] noteSounds;
     [SerializeField] private SoundMixerManager soundMixerManager;
-
-    private void Awake()
-    {
-        soundMixerManager.SetMasterVolume(masterVolume);
-        masterVolumeSlider.value = masterVolume;
-
-        soundMixerManager.SetSoundFXVolume(soundFXVolume);
-        soundFXVolumeSlider.value = soundFXVolume;
-
-        soundMixerManager.SetMusicVolume(musicVolume);
-        musicVolumeSlider.value = musicVolume;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -139,20 +118,5 @@ public class GameManager : MonoBehaviour
     public void returnMain()
     {
         SceneManager.LoadScene(0);
-    }
-
-    public void SetMasterVolume(float volume)
-    {
-        masterVolume = volume;
-    }
-    
-    public void SetSoundFXVolume(float volume)
-    {
-        soundFXVolume = volume;
-    }
-    
-    public void SetMusicVolume(float volume)
-    {
-        musicVolume = volume;
     }
 }
