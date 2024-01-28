@@ -21,7 +21,7 @@ public class Introduction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currentPanel == 8)
+            if (currentPanel >= panels.Length-1)
             {
                 SceneManager.LoadScene(2);
             }
