@@ -39,8 +39,8 @@ public class SoundParameterSaving : MonoBehaviour
     {
         masterVolume = volume;
     }
-
-        public void SetSoundFXVolume(float volume)
+    
+    public void SetSoundFXVolume(float volume)
     {
         soundFXVolume = volume;
     }

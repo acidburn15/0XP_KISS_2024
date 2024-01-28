@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject hud;
     public int notesCollected;
 
-    [SerializeField] private AudioClip[] noteSounds;
+    [SerializeField] private AudioClip levelRiff;
     [SerializeField] private SoundMixerManager soundMixerManager;
 
     // Start is called before the first frame update
@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         noteObjects = GameObject.FindGameObjectsWithTag("Note");
         StartCoroutine(DelayCoroutine(noteObjects));
+        SoundFXManager.Instance.PlaySoundFXClip(levelRiff, noteObjects[0].transform, 1f);
 
     }
 
@@ -82,10 +83,6 @@ public class GameManager : MonoBehaviour
         {
             FollowPlayer noteObject = note.GetComponent<FollowPlayer>();
             noteObject.EndLevel();
-            SoundFXManager.Instance.PlaySoundFXClip(noteObject.GetNoteSound(), noteObject.transform,
-                noteObject.GetNoteSoundVolume());
-            // activation du son pour la note.
-
             yield return new WaitForSeconds(0.35f);
         }
     }

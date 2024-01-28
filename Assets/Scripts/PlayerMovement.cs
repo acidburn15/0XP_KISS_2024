@@ -37,17 +37,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.notesCollected == gameManager.numberOfNotes)
-        {
-            float distanceWithDoor = (doorTransform.position - transform.position).magnitude;
+        //if (gameManager.notesCollected == gameManager.numberOfNotes)
+        //{
+        //    float distanceWithDoor = (doorTransform.position - transform.position).magnitude;
 
-                if (distanceWithDoor < 10f)
-                {
-                    soundMixerManager.SetMusicVolume(musicManager.volume - ((10 - distanceWithDoor)) * 0.2f);//max volume setter par le jouer - 20% par unit�s de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
-                }
-            
-
-        }
+        //    if (distanceWithDoor <= 10f && distanceWithDoor > 5)
+        //    {
+        //        soundMixerManager.SetMusicVolume(musicManager.volume - (((10 - distanceWithDoor)) * 0.2f)* musicManager.volume);//max volume setter par le jouer - 20% par unit�s de magnitude; 10 - magnitude -> sound maximum - (((10 - magnitude)*0.2)* sound maximum)
+        //    }
+        //}
         Move();
         InvertGravity();
     }
@@ -84,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.Play("Player right");
             if (timer > waitTime && !cooldown)
             {
-                //SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
+                SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
                 timer = 0;
             }
         }
@@ -94,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.Play("Player left");
             if (timer > waitTime && !cooldown)
             {
-                //SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
+                SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
                 timer = 0;
             }
         }
