@@ -6,7 +6,15 @@ public class Door : MonoBehaviour
 {
 
     [SerializeField] private Animator doorAnimator;
+
+    // sound variables
+    [SerializeField] private AudioClip doorClip;
+    [SerializeField] private AudioClip portalClip;
+    private float portalClipLength = 9.728f;
+    private float timer = 10f;
     private bool open;
+    private bool clipPlayed = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +25,23 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         GameObject[] noteArray = GameObject.FindGameObjectsWithTag("Note");
         if (noteArray.Length <= 0)
         {
             doorAnimator.SetTrigger("openDoor");
             open = true;
+            if (!clipPlayed)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(doorClip, transform, 1f);
+                clipPlayed = true;
+            }
+            else if (timer > portalClipLength)
+            {
+                SoundFXManager.Instance.PlaySoundFXClip(portalClip, transform, 1f);
+                timer = 0f;
+            }
+
         }
         /*if (Input.GetKeyDown(KeyCode.G))
         {

@@ -12,9 +12,11 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private Animator noteAnimator;
     public GameManager gameManager;
 
-    [SerializeField] private ParticleSystem explosion;
     [SerializeField] private AudioClip noteSound;
     [SerializeField] private float noteVolume = 1f;
+    [SerializeField] private AudioClip explosionSound;
+    [SerializeField] private ParticleSystem explosion;
+
 
     public bool picked = false;
     public bool endLevel = false;
@@ -59,6 +61,7 @@ public class FollowPlayer : MonoBehaviour
             explosion.transform.position = endPos.position + new Vector3(0.4f, -0.4f, -1);
             Instantiate(explosion);
             Destroy(gameObject);
+            SoundFXManager.Instance.PlaySoundFXClip(explosionSound, transform, 1f);
         }
         else if (playerTag.Contains(col.tag) && !picked)
         {

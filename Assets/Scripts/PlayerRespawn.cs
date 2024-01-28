@@ -10,6 +10,7 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] private Transform spawn;
     [SerializeField] public GameManager gameManager;
     [SerializeField] private TextMeshProUGUI countDead;
+    [SerializeField] private AudioClip deathClip;
 
 
     public int death;
@@ -29,6 +30,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (killingTags.Contains(killingObject.tag))
         {
+            SoundFXManager.Instance.PlaySoundFXClip(deathClip, transform, 1f);
             gameManager.RespawnNotes();
             transform.position = spawn.position;
             gameManager.addDeath();
