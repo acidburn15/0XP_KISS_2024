@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private Transform doorTransform;
     [Serialize] SoundMixerManager soundMixerManager;
+    [Serialize] AudioSource musicManager;
 
     private GameObject note;
     private bool top;
@@ -37,11 +38,11 @@ public class PlayerMovement : MonoBehaviour
         if (gameManager.notesCollected == gameManager.numberOfNotes)
         {
             float distanceWithDoor = (doorTransform.position - transform.position).magnitude;
-            //if (distanceWithDoor < 10f)
-            //{
-            //    soundMixerManager.SetMusicVolume(1);//max volume setter par le jouer - 20% par unités de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
-            //}
-        }
+        //    if (distanceWithDoor < 10f)
+        //    {
+        //        soundMixerManager.SetMusicVolume(musicManager.volume - ((10 - distanceWithDoor)) * 0.2f);//max volume setter par le jouer - 20% par unités de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
+        //    }
+        //}
         Move();
         InvertGravity();
 
