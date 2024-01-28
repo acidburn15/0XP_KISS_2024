@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -34,7 +35,8 @@ public class Door : MonoBehaviour
         if (open)
         {
             Debug.Log("NEXT LEVEL");
-            // load prochaine scène;
+            SceneManager.LoadScene(0);
+            // load prochaine scï¿½ne;
         }
     }
 }
