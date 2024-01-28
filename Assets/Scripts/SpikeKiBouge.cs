@@ -9,7 +9,7 @@ public class SpikeKiBouge : MonoBehaviour
     private float time = 1;
     private int seconde;
     private int verif = 0;
-    private int verif2 = 0;
+    // private int verif2 = 0;
     // Start is called before the first frame update
     private void Awake()
     {

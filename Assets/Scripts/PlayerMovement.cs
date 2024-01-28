@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private bool top;
     private bool cooldown = false;
     public float isInverted = 1;
-    private bool epicIsPlayed = false;
+    //private bool epicIsPlayed = false;
 
     // delai pour sound
     private float waitTime = 0.25f;
@@ -39,21 +39,16 @@ public class PlayerMovement : MonoBehaviour
         if (gameManager.notesCollected == gameManager.numberOfNotes)
         {
             float distanceWithDoor = (doorTransform.position - transform.position).magnitude;
-            //if (distanceWithDoor < 10f)
-            //{
-            //    soundMixerManager.SetMusicVolume(1);//max volume setter par le jouer - 20% par unit�s de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
-            //}
-        }
 
-        //    if (distanceWithDoor < 10f)
-        //    {
-        //        soundMixerManager.SetMusicVolume(musicManager.volume - ((10 - distanceWithDoor)) * 0.2f);//max volume setter par le jouer - 20% par unit�s de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
-        //    }
-        //}
-        
+            //    if (distanceWithDoor < 10f)
+            //    {
+            //        soundMixerManager.SetMusicVolume(musicManager.volume - ((10 - distanceWithDoor)) * 0.2f);//max volume setter par le jouer - 20% par unit�s de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
+            //    }
+            //}
+
+        }
         Move();
         InvertGravity();
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
