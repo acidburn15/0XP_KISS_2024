@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private AudioClip[] footsteps;
+
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private Transform doorTransform;
+    [Serialize] SoundMixerManager soundMixerManager;
 
     private GameObject note;
     private bool top;
@@ -23,12 +28,20 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        doorTransform = GameObject.FindGameObjectWithTag("Door").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.notesCollected == gameManager.numberOfNotes)
+        {
+            float distanceWithDoor = (doorTransform.position - transform.position).magnitude;
+            //if (distanceWithDoor < 10f)
+            //{
+            //    soundMixerManager.SetMusicVolume(1);//max volume setter par le jouer - 20% par unités de magnitude; 10 - magnitude -> sound maximum - ((10 - magnitude)*0.2) 
+            //}
+        }
         Move();
         InvertGravity();
 
