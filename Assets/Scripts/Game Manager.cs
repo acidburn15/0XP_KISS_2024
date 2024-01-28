@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         hud.SetActive(true);
         setting.SetActive(false);
+        son.SetActive(false);
     }
 
     public void returnSetting()
