@@ -6,6 +6,7 @@ public class OpenDoor : MonoBehaviour
 {
     public GameManager gameManager;
     [SerializeField] private Transform doorTransform;
+    [SerializeField] private GameObject pressE;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,17 @@ public class OpenDoor : MonoBehaviour
         {
             gameManager.OpenDoor();
         }
+
+        else if (playerToDoor.magnitude < 5)
+        {
+            pressE.SetActive(true);
+        }
+        else
+        {
+            pressE.SetActive(false);
+        }
     }
+
+   
 
 }
