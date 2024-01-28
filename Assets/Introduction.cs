@@ -23,7 +23,7 @@ public class Introduction : MonoBehaviour
         {
             if (currentPanel == 8)
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
             }
             else
             {

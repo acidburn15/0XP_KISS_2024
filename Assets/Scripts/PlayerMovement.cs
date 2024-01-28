@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //playerAnimator.Play("Player intro");
         rb = GetComponent<Rigidbody2D>();
         doorTransform = GameObject.FindGameObjectWithTag("Door").transform;
     }
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.Play("Player right");
             if (timer > waitTime && !cooldown)
             {
-                SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
+                //SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
                 timer = 0;
             }
         }
@@ -93,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.Play("Player left");
             if (timer > waitTime && !cooldown)
             {
-                SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
+                //SoundFXManager.Instance.PlayRandomSoundFXClip(footsteps, transform, 1f);
                 timer = 0;
             }
         }
